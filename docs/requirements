@@ -1,0 +1,47 @@
+isuf file has format with columns of
+- pickup priority id
+- date
+- priority user id
+- user name
+- user phone
+- user email
+- priority supplier id
+- priority supplier name
+- status
+- array of <sub suppliers id, sub supplier name>
+
+
+after collection, the output file should be exported with format:
+- pickup priority id
+- date
+- main supplier id
+- warehouse priority id
+- pickup reason id
+- sub supplier priority id
+- priority food type id
+- priority container id
+- quantity
+
+if there is no collection from a main supplier, the output should be of format
+- pickup priority id
+- date
+- main supplier priority id
+- "X" (technically its the warehouse id, but there is none)
+- pickup reason id (in this case, there was no pickup, so it should be 03 or 06)
+
+the output file should be a csv with tabs (tsv)
+
+Outputting the file should be append only (as leket will remove read row)
+
+
+Pages the should be:
+- Some kind of login page (if they go to the app independently)
+- List of their pickups
+- within a pickup, the main supplier name, and the sub suppliers
+ - plus a form for each, the warehouse, and pickup reason if needed.
+ - There should be a room for comments (if needed), possibly per sub supplier
+- Leket should have an admin page, where they will be able to control all data
+before being exported. For the beginning, only approved pickups will be exported
+
+For maintenance purposes, there is no need to save data on pickups in DB beyond
+X amount of time, where X depends on the DB chosen and what we will agree from leket
