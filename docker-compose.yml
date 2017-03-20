@@ -1,0 +1,8 @@
+dev:
+  dockerfile: config/docker/dev
+  build: .
+  volumes:
+    - ./:${PWD}
+  working_dir: ${PWD}
+  ports:
+    - "3000:3000"
