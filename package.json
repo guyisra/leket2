@@ -23,7 +23,8 @@
   "scripts": {
     "dev": "DEVELOPMENT=true nodemon src/server/index.js",
     "build": "webpack --config ./config/webpack.config.js",
-    "start": "node src/server/index.js"
+    "start": "node src/server/index.js",
+    "postinstall": "webpack --config ./config/webpack.config.js"
   },
   "babel": {
     "presets": [
