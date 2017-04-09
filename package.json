@@ -4,15 +4,29 @@
   "private": true,
   "dependencies": {
     "express": "^4.15.2",
-    "nodemon": "^1.11.0"
+    "react": "^15.5.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0",
+    "react-dom": "^15.5.3",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.3.3"
+  },
   "scripts": {
-    "dev": "nodemon src/server/index.js"
+    "dev": "nodemon src/server/index.js",
+    "build-react": "webpack --config ./config/webpack.config.js"
   },
   "babel": {
     "presets": [
-      "react-app"
+      "es2015",
+      "react"
     ]
   }
 }
