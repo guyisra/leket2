@@ -24,7 +24,7 @@
     "dev": "DEVELOPMENT=true nodemon src/server/index.js",
     "build": "webpack --config ./config/webpack.config.js",
     "start": "node src/server/index.js",
-    "postinstall": "webpack --config ./config/webpack.config.js"
+    "postinstall": "NODE_ENV=production webpack -p"
   },
   "babel": {
     "presets": [
