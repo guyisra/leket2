@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
-    "dev": "concurrently \"node scripts/start.js\" \"node src/server/index.js\"",
+    "dev": "nodemon src/server/index.js"
   },
   "babel": {
     "presets": [
