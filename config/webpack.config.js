@@ -10,7 +10,7 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(css|scss)$/, loader: 'style-loader!css-loader!sass-loader'}
+      { test: /\.(css|scss)$/, loader: 'style-loader!css-loader?modules,localIdentName=[path][name]--[local]!sass-loader'}
     ]
   }
 }
