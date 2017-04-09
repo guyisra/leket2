@@ -21,7 +21,8 @@
   },
   "scripts": {
     "dev": "nodemon src/server/index.js",
-    "build-react": "webpack --config ./config/webpack.config.js"
+    "build": "webpack --config ./config/webpack.config.js",
+    "start": "node src/server/index.js"
   },
   "babel": {
     "presets": [
