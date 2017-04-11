@@ -14,6 +14,7 @@
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.4.0",
     "css-loader": "^0.28.0",
+    "jest": "^19.0.2",
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "react-dom": "^15.5.3",
@@ -30,7 +31,9 @@
     "dev-api": "DEVELOPMENT=true nodemon src/server/index.js --ignore src/frontend",
     "dev-fed": "DEVELOPMENT=true webpack-dev-server --config ./config/webpack.config.js --hot --inline",
     "build": "webpack --config ./config/webpack.config.js",
-    "start": "node src/server/index.js"
+    "start": "node src/server/index.js",
+    "test": "jest __test__/*",
+    "heroku-postbuild": "npm run build -- -p --progress"
   },
   "babel": {
     "presets": [
