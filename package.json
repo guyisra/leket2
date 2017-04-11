@@ -3,25 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.15.2",
     "react": "^15.5.3"
   },
   "devDependencies": {
-    "webpack-dev-middleware": "^1.10.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.4.0",
     "css-loader": "^0.28.0",
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "react-dom": "^15.5.3",
+    "react-hot-loader": "^1.3.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-dev-server": "^2.4.2",
+    "webpack-hot-middleware": "^2.18.0"
   },
   "scripts": {
-    "dev": "DEVELOPMENT=true nodemon src/server/index.js",
+    "dev": "concurrently \"yarn dev-api\" \"yarn dev-fed\"",
+    "dev-api": "DEVELOPMENT=true nodemon src/server/index.js --ignore src/frontend",
+    "dev-fed": "DEVELOPMENT=true webpack-dev-server --config ./config/webpack.config.js --hot --inline",
     "build": "webpack --config ./config/webpack.config.js",
     "start": "node src/server/index.js"
   },
