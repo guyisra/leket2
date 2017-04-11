@@ -2,6 +2,10 @@
   "name": "leket2",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "7.5.0",
+    "npm": "4.1.2"
+  },
   "dependencies": {
     "ejs": "^2.5.6",
     "express": "^4.15.2",
