@@ -23,10 +23,13 @@ export class LoginForm extends Component {
             )}
           </Form.Item>          
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button type="primary" htmlType="submit" className="login-form-button" loading={this.props.loading}>
               {t('login_form.log_in')}
             </Button>
           </Form.Item>
+          {
+            this.props.errors ? this.props.errors.error : ''
+          }
         </Form>
       </div>
     )
