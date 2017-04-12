@@ -5,5 +5,5 @@ module.exports = (req, res) => {
     } else {
       return res.status(400).json({error: 'User not found'})
     }
-  }, 3000)
+  }, 500)
 }
