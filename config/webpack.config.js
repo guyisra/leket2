@@ -14,7 +14,9 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(css|scss)$/, loader: 'style-loader!css-loader?modules,localIdentName=[path][name]--[local]!sass-loader'}
+      { test: /\.scss$/, loader: 'style-loader!css-loader?modules,localIdentName=[path][name]--[local]!sass-loader'},
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
+      { test: /\.yml$/, loader: 'json-loader!yaml-loader' }
     ]
   },
 
