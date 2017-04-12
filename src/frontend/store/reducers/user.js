@@ -28,7 +28,7 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload.error,
+        error: action.payload.response.data,
         email: null  
       }
 
