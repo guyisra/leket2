@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reduxThunk from 'redux-thunk';
+import reduxPromiseMiddleware from 'redux-promise-middleware';
 
 import { user } from './reducers/user';
 
@@ -9,6 +9,10 @@ export const configureStore = () => {
     combineReducers({
       user
     }),
-    composeWithDevTools(applyMiddleware(reduxThunk))
+    composeWithDevTools(
+      applyMiddleware(
+        reduxPromiseMiddleware()
+      )
+    )
   )
 }

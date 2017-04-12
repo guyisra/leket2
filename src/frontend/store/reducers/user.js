@@ -1,4 +1,4 @@
-import { LOGIN_FAILED, LOGIN_LOADING, LOGIN_SUCCESS } from '../actions/types';
+import { FULFILLED, LOGIN, PENDING, REJECTED } from '../actions/types';
 
 const initialState = {
   email: null,
@@ -7,7 +7,7 @@ const initialState = {
 
 export const user = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_LOADING:
+    case PENDING(LOGIN):
       return {
         ...state,
         loading: true,
@@ -15,7 +15,7 @@ export const user = (state = initialState, action) => {
         email: null
       }
 
-    case LOGIN_SUCCESS:
+    case FULFILLED(LOGIN):
       return {
         ...state,
         email: action.payload.email,
@@ -24,12 +24,12 @@ export const user = (state = initialState, action) => {
         email: action.payload.email
       }
 
-    case LOGIN_FAILED:
+    case REJECTED(LOGIN):
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        email: null
+        email: null  
       }
 
     default:

@@ -25,7 +25,7 @@ export class Login extends Component {
         </div>
         <div>
           <LoginForm 
-            onSubmit={(credentials) => this.props.actions.login(credentials)} 
+            onSubmit={(credentials) => !this.props.user.loading && this.props.actions.login(credentials)} 
             loading={this.props.user.loading}
             errors={this.props.user.error}
           />
