@@ -6,6 +6,7 @@ import reduxPromiseMiddleware from 'redux-promise-middleware';
 import createHistory from 'history/createHashHistory'
 
 import { user } from './reducers/user';
+import { pickups } from './reducers/pickups';
 
 export const history = createHistory()
 
@@ -15,6 +16,7 @@ export const configureStore = () => {
   return createStore(
     combineReducers({
       user,
+      pickups,
       router: routerReducer
     }),
     composeWithDevTools(

@@ -2,3 +2,9 @@ login_form:
   title: התחבר ללקט
   email: אימייל
   log_in: התחבר
+
+user_activity:
+  locations: מקומות
+
+location_overview:
+  collect_from: אסוף מ-
