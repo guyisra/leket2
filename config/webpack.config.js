@@ -11,18 +11,17 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.scss$/, loader: 'style-loader!css-loader?modules,localIdentName=[path][name]--[local]!sass-loader'},
-      { test: /\.css$/, loader: 'style-loader!css-loader'},
-      { test: /\.yml$/, loader: 'json-loader!yaml-loader' }
+    rules: [
+      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.jsx$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader?modules,localIdentName=[path][name]--[local]', { loader: 'postcss-loader', options: { plugins: () => ([require('rtlcss')]) } }, 'sass-loader'] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader', { loader: 'postcss-loader', options: { plugins: () => ([require('rtlcss')]) } } ] },
+      { test: /\.yml$/, use: ['json-loader', 'yaml-loader'] }
     ]
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ],
 
   devServer: {

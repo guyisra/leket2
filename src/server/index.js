@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, '../../src/public'))
 app.get('/', (req, res) => {
-  res.render('index', {bundleLocation: DEVELOPMENT ? 'http://localhost:9000' : ''})
+  res.render('index', {bundleLocation: DEVELOPMENT ? `http://${req.hostname}:9000` : ''})
 })
 app.use('/api/v1', require('./api.js'))
 
