@@ -18,10 +18,9 @@ export const user = (state = initialState, action) => {
     case FULFILLED(LOGIN):
       return {
         ...state,
-        email: action.payload.email,
+        email: action.payload.data.email,
         loading: false,
-        error: null,
-        email: action.payload.email
+        error: null
       }
 
     case REJECTED(LOGIN):

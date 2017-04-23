@@ -1,0 +1,18 @@
+.LogoContainer {
+  text-align: center;
+  margin-bottom: 20px;
+  transition: 0.3s ease-in all;
+
+  &.LogoContainerLarge {
+    width: 392px;
+    height: 218px;
+  }
+
+  &.LogoContainerSmall {
+    width: 100px;
+  }
+}
+
+.Logo {
+  width: 100%;
+}

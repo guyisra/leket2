@@ -27,9 +27,6 @@ export class Login extends Component {
     console.log('blah')
     return (
       <div className={styles.Login}>
-        <div className={styles.LogoContainer}>
-          <img src='/images/logo-sm.png' />
-        </div>
         <div>
           <LoginForm 
             onSubmit={credentials => this.handleSubmit(credentials)} 
