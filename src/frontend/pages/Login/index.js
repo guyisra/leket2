@@ -24,7 +24,6 @@ export class Login extends Component {
     }
   }
   render () {
-    console.log('blah')
     return (
       <div className={styles.Login}>
         <div>

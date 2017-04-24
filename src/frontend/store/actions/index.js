@@ -9,3 +9,5 @@ export const gotoUserActivity = email => push('/users/' + email)
 
 export const getPickups = createAction(GET_PICKUPS, () => http.get('/pickups'))
 export const gotoLocationPickup = locationId => push('/locations/' + locationId)
+
+export const gotoLogin = () => push('/')
