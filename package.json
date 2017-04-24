@@ -60,7 +60,7 @@
     "build": "webpack --config ./config/webpack.config.js",
     "start": "node src/server/index.js",
     "test": "jest __test__/*",
-    "heroku-postbuild": "npm run build -- -p --progress"
+    "heroku-postbuild": "npm rebuild node-sass && npm run build -- -p --progress"
   },
   "babel": {
     "presets": [
