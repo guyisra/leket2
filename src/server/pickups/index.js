@@ -1,7 +1,6 @@
 const express = require('express');
 const fs = require('fs')
 const windows1255 = require('windows-1255')
-const csv = require('csv')
 
 const pickupsRouter = express.Router();
 
