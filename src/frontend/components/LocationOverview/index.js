@@ -7,9 +7,11 @@ import * as styles from './index.scss';
 export class LocationOverview extends Component {
   render () {
     const { name, suppliers } = this.props.location
+    const pickupButton = 
+      <Button type="primary" onClick={this.props.onClick}>{t('location_overview.collect_from')+name}</Button>
     return (
       <div className={styles.LocationOverview}>
-        <Card title={name}>
+        <Card title={pickupButton}>
           <Timeline>
             {
               suppliers.map(supplier => (
@@ -17,7 +19,6 @@ export class LocationOverview extends Component {
               ))
             }
           </Timeline>
-          <Button type="primary" onClick={this.props.onClick}>{t('location_overview.collect_from')+name}</Button>
         </Card>
       </div>
     )

@@ -9,32 +9,32 @@ pickupsRouter.get('/', (req, res) => {
     locations: [
       {
         id: 1,
-        name: 'Azrieli',
+        name: 'עזריאלי',
         suppliers: [
           {
             id: 1,
-            name: 'Store 1',
+            name: 'ארומה',
             address: '1st floor'
           },
           {
             id: 2,
-            name: 'Store 2',
+            name: 'מקדונלדס',
             address: '1st floor'
           }
         ]
       }, 
       {
         id: 2,
-        name: 'Osher Ad',
+        name: 'איירפורט סיטי',
         suppliers: [
           {
             id: 3,
-            name: 'Store 3',
+            name: 'בהדונס',
             address: '1st floor'
           },
           {
             id: 4,
-            name: 'Store 4',
+            name: 'פלאפל',
             address: '1st floor'
           }
         ]

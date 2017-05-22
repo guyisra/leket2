@@ -1,0 +1,7 @@
+FROM node:7.7.3
+
+# install Yarn
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.22.0
+
+EXPOSE 3000
+EXPOSE 9000

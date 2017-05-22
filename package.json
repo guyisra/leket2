@@ -16,6 +16,7 @@
     "express": "^4.15.2",
     "i18n-js": "^1.0.0",
     "lodash": "^4.17.4",
+    "pg": "^6.2.2",
     "react": "^15.5.3",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.0",
@@ -24,7 +25,8 @@
     "redux-actions": "^2.0.1",
     "redux-devtools-extension": "^2.13.0",
     "redux-promise-middleware": "^4.2.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "sequelize": "^3.30.4"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -56,6 +58,7 @@
   "scripts": {
     "dev": "concurrently \"yarn dev-api\" \"yarn dev-fed\"",
     "dev-api": "DEVELOPMENT=true nodemon src/server/index.js --ignore src/frontend",
+    "predev-fed": "npm rebuild node-sass",
     "dev-fed": "DEVELOPMENT=true webpack-dev-server --config ./config/webpack.config.js --hot --inline --host 0.0.0.0",
     "build": "webpack --config ./config/webpack.config.js",
     "start": "node src/server/index.js",
