@@ -63,7 +63,7 @@
     "predev-fed": "npm rebuild node-sass",
     "dev-fed": "DEVELOPMENT=true webpack-dev-server --config ./config/webpack.config.js --hot --inline --host 0.0.0.0",
     "build": "webpack --config ./config/webpack.config.js",
-    "start": "node src/server/index.js",
+    "start": "node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all && node src/server/index.js",
     "test": "jest __test__/*",
     "heroku-postbuild": "npm rebuild node-sass && npm run build -- -p --progress"
   },
