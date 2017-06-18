@@ -1,16 +1,18 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable("Warehouses", {
+    return queryInterface.createTable('Warehouses', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: sequelize.literal('NOW()')
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: sequelize.literal('NOW()')
       },
       priority_id: {
         type: Sequelize.STRING
@@ -24,10 +26,10 @@ module.exports = {
       city: {
         type: Sequelize.STRING
       }
-    });
+    })
   },
 
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable("Warehouses");
+    return queryInterface.dropTable('Warehouses')
   }
-};
+}

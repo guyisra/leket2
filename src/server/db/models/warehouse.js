@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Warehouse = sequelize.define(
-    "Warehouse",
+    'Warehouse',
     {
       priority_id: {
         type: DataTypes.STRING
@@ -18,6 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       classMethods: {}
     }
-  );
-  return Warehouse;
-};
+  )
+  return Warehouse
+}
