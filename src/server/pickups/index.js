@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require('express')
 const fs = require('fs')
 const windows1255 = require('windows-1255')
 
-const pickupsRouter = express.Router();
+const pickupsRouter = express.Router()
 
 pickupsRouter.get('/', (req, res) => {
   res.json({
@@ -22,7 +22,7 @@ pickupsRouter.get('/', (req, res) => {
             address: '1st floor'
           }
         ]
-      }, 
+      },
       {
         id: 2,
         name: 'איירפורט סיטי',

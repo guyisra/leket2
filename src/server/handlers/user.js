@@ -1,7 +1,5 @@
 const User = require('../db/models').User
 
-
-
 module.exports = (req, res) => {
   // setTimeout(() => {
   //   if (req.body.email === 'test') {
