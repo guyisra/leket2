@@ -1,6 +1,6 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Warehouses', {
+    return queryInterface.createTable('FoodTypes', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -19,17 +19,11 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.STRING
-      },
-      city: {
-        type: Sequelize.STRING
       }
     })
   },
 
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Warehouses')
+    return queryInterface.dropTable('FoodTypes')
   }
 }
