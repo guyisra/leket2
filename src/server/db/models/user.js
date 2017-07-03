@@ -1,16 +1,21 @@
-const Sequelize = require('sequelize')
-
-const defineUser = (conn) => {
-  return conn.define('user', {
-    name: {
-      type: Sequelize.STRING
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define(
+    'User',
+    {
+      name: {
+        type: DataTypes.STRING
+      },
+      email: {
+        type: DataTypes.STRING
+      }
     },
-    email: {
-      type: Sequelize.STRING
+    {
+      classMethods: {
+        // associate: (models) => {
+        //   User.hasMany(models.Pickups)
+        // },
+      }
     }
-  })
-}
-
-module.exports = { 
-  defineUser
+  )
+  return User
 }

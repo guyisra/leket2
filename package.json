@@ -12,11 +12,13 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "classnames": "^2.2.5",
+    "csv-parse": "^1.2.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "i18n-js": "^1.0.0",
     "lodash": "^4.17.4",
     "pg": "^6.2.2",
+    "prettier": "^1.4.4",
     "react": "^15.5.3",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.0",
@@ -26,7 +28,8 @@
     "redux-devtools-extension": "^2.13.0",
     "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.2.0",
-    "sequelize": "^3.30.4"
+    "sequelize": "^4.1.0",
+    "sequelize-cli": "^2.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

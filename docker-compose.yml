@@ -15,6 +15,7 @@ dev:
 db:
   image: postgres:9.6.3
   environment:
+    POSTGRES_DB: leket
     POSTGRES_USER: user
     POSTGRES_PASSWORD: password
   ports:
