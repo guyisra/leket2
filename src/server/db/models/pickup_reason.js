@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const FoodType = sequelize.define(
+  const PickupReason = sequelize.define(
     'PickupReason',
     {
       code: {
