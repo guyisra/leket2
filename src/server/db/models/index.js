@@ -22,7 +22,7 @@ const configSequelize = () => {
   return sequelize
 }
 
-const addModelsToSequelize = () => {
+const addModelsToSequelize = (sequelize) => {
   fs
     .readdirSync(__dirname)
     .filter(
@@ -43,10 +43,10 @@ const setupModelAssociations = () => {
   })
 }
 
-addModelsToSequelize()
+db.sequelize = configSequelize()
+addModelsToSequelize(db.sequelize)
 setupModelAssociations()
 
-db.sequelize = configSequelize()
 db.Sequelize = Sequelize
 
 module.exports = db
