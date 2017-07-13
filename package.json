@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "7.9.0",
+    "node": "8.1.4",
     "npm": "4.2.0"
   },
   "dependencies": {
