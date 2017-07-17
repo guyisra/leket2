@@ -1,4 +1,4 @@
-FROM node:7.7.3
+FROM node:8.1.4
 
 # install Yarn
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.22.0
