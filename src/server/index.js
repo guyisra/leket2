@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const path = require('path')
-const { pendingPickups, groupBySupplier } = require('./models/pending-pickups')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -18,9 +17,9 @@ app.get('/', (req, res) => {
   })
 })
 
-const deps = {
-  pendingPickups, groupBySupplier
-}
+const db = require('./db/models').sequelize
+
+const deps = require('./models/pending-pickups')({db})
 
 app.use('/api/v1', require('./api.js')(deps))
 

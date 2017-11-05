@@ -1,75 +1,49 @@
 const _ = require('lodash')
 
+module.exports = ({db}) => {
+  const groupBySupplier = (pickups) => {
 
-const groupBySupplier = (pickups) => {
+    const grouped = _.groupBy(pickups, obj => {
+      return obj.locationId
+    });
 
-  const grouped = _.groupBy(pickups, obj => {
-    return obj.mainSupplier.id
-  });
+    // it works, don't worry
+    const withoutLocation = x => _.omit(x, ['locationId', 'locationName'])
 
-  // it works, don't worry
-  const withoutMainSupplier = x => _.omit(x, 'mainSupplier')
+    const pullLocationUp = (arr) => Object.assign({},
+        {
+          id: arr[0].locationId,
+          name: arr[0].locationName,
+          suppliers: arr.map(withoutLocation)
+        }
+    )
 
-  const pullMainSuppliersUp = (arr) => Object.assign({},
-      arr[0].mainSupplier,
-      {
-        suppliers: arr.map(withoutMainSupplier)
-      }
-  )
+    const locations = Object.values(_.mapValues(grouped, pullLocationUp))
 
-  const locations = Object.values(_.mapValues(grouped, pullMainSuppliersUp))
+    return {
+      locations
+    }
+  }
+
+  const pendingPickups = (userId) => {
+    const rows = db.query(`
+      select
+        suppliers.id as 'id',
+        suppliers.name as 'name',
+        suppliers.address as 'address',
+        locations.id as 'locationId',
+        locations.name as 'locationName'
+      from pending_pickups
+      join suppliers on pending_pickups.supplier_id = suppliers.id
+      join locations on suppliers.location_id = locations.id
+      where
+        pending_pickups.user_id = ${userId};
+    `)
+
+    return rows
+  }
 
   return {
-    locations
+    pendingPickups, groupBySupplier
   }
-}
-
-const pendingPickups = (userId) => {
-  const pendingPickupsPerUser =
-    {
-      "test": [
-        {
-          id: 1,
-          name: 'ארומה',
-          address: '1st floor',
-          mainSupplier: {
-            id: 1,
-            name: 'עזריאלי',
-          }
-        },
-        {
-          id: 2,
-          name: 'מקדונלדס',
-          address: '1st floor',
-          mainSupplier: {
-            id: 1,
-            name: 'עזריאלי',
-          }
-        },
-        {
-          id: 3,
-          name: 'בהדונס',
-          address: '1st floor',
-          mainSupplier: {
-            id: 2,
-            name: 'איירפורט סיטי',
-          }
-        },
-        {
-          id: 4,
-          name: 'פלאפל',
-          address: '1st floor',
-          mainSupplier: {
-            id: 2,
-            name: 'איירפורט סיטי',
-          }
-        }
-      ]
-    }
-
-  return pendingPickupsPerUser[userId]    
-}
-
-module.exports = {
-  pendingPickups, groupBySupplier
 }
