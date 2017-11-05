@@ -10,12 +10,11 @@ const groupBySupplier = (pickups) => {
   // it works, don't worry
   const withoutMainSupplier = x => _.omit(x, 'mainSupplier')
 
-  const pullMainSuppliersUp = (arr) =>
-  (
-    {
-      ...arr[0].mainSupplier,
-      suppliers: arr.map(withoutMainSupplier)
-    }
+  const pullMainSuppliersUp = (arr) => Object.assign({},
+      arr[0].mainSupplier,
+      {
+        suppliers: arr.map(withoutMainSupplier)
+      }
   )
 
   const locations = Object.values(_.mapValues(grouped, pullMainSuppliersUp))
@@ -26,11 +25,9 @@ const groupBySupplier = (pickups) => {
 }
 
 const pendingPickups = (userId) => {
-  return pendingPickupsPerUser[userId]
-
-  pendingPickupsPerUser =
+  const pendingPickupsPerUser =
     {
-      "user1": [
+      "test": [
         {
           id: 1,
           name: 'ארומה',
@@ -70,6 +67,7 @@ const pendingPickups = (userId) => {
       ]
     }
 
+  return pendingPickupsPerUser[userId]    
 }
 
 module.exports = {

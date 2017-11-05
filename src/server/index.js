@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express')
-
 const path = require('path')
+const { pendingPickups, groupBySupplier } = require('./models/pending-pickups')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -18,7 +18,11 @@ app.get('/', (req, res) => {
   })
 })
 
-app.use('/api/v1', require('./api.js'))
+const deps = {
+  pendingPickups, groupBySupplier
+}
+
+app.use('/api/v1', require('./api.js')(deps))
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT} http://localhost:${PORT}`)
