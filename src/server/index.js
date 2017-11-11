@@ -17,11 +17,9 @@ app.get('/', (req, res) => {
   })
 })
 
-const db = require('./db/models').sequelize
+const { sequelize } = require('./db/models')
 
-const deps = require('./models/pending-pickups')({db})
-
-app.use('/api/v1', require('./api.js')(deps))
+app.use('/api/v1', require('./api.js')(sequelize.models))
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT} http://localhost:${PORT}`)

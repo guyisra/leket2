@@ -1,10 +1,11 @@
+import { seq } from '../../../../../Library/Caches/typescript/2.6/node_modules/@types/async';
+
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
 const basename = path.basename(module.filename)
 const env = process.env.NODE_ENV || 'development'
 const config = require(`${__dirname}/../config.json`)[env]
-const db = {}
 
 const configSequelize = () => {
   let sequelize
@@ -30,23 +31,20 @@ const addModelsToSequelize = (sequelize) => {
         file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     )
     .forEach(file => {
-      const model = sequelize.import(path.join(__dirname, file))
-      db[model.name] = model
+      sequelize.import(path.join(__dirname, file))
     })
 }
 
-const setupModelAssociations = () => {
-  Object.keys(db).forEach(modelName => {
-    if (db[modelName].associate) {
-      db[modelName].associate(db)
-    }
-  })
+const setupModelAssociations = ({models}) => {
+  models.PendingPickups.belongsTo(models.Suppliers)
+  models.Suppliers.hasMany(models.PendingPickups)
 }
 
-db.sequelize = configSequelize()
-addModelsToSequelize(db.sequelize)
-setupModelAssociations()
+const sequelize = configSequelize()
+addModelsToSequelize(sequelize)
+setupModelAssociations(sequelize)
 
-db.Sequelize = Sequelize
-
-module.exports = db
+module.exports = {
+  sequelize,
+  Sequelize
+}
