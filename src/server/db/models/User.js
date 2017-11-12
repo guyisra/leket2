@@ -1,11 +1,12 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
-  'Supplier',
+  'User',
   {
-    pid: {
+    id: {
       type: DataTypes.STRING,
       unique: true
     },
+    phone: DataTypes.STRING,
     name: DataTypes.STRING,
-    locationId: DataTypes.STRING
+    email: DataTypes.STRING
   }
 )

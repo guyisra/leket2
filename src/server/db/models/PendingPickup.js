@@ -2,7 +2,8 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
   'PendingPickup',
   {
     pid: DataTypes.STRING,    
-    supplierId: DataTypes.STRING,
-    userId: DataTypes.STRING
+    date: DataTypes.DATEONLY,
+    userId: DataTypes.STRING,
+    supplierId: DataTypes.STRING
   }
 )

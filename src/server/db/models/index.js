@@ -34,6 +34,7 @@ const addModelsToSequelize = (sequelize) => {
 }
 
 const setupModelAssociations = ({models}) => {
+  models.PendingPickup.belongsTo(models.User, {foreignKey: 'userId', targetKey: 'id'})
   models.PendingPickup.belongsTo(models.Supplier, {foreignKey: 'supplierId', targetKey: 'pid'})
   models.Supplier.belongsTo(models.Location, {foreignKey: 'locationId', targetKey: 'pid'})
 }
