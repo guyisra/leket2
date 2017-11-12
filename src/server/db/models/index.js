@@ -1,5 +1,3 @@
-import { seq } from '../../../../../Library/Caches/typescript/2.6/node_modules/@types/async';
-
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
@@ -36,8 +34,8 @@ const addModelsToSequelize = (sequelize) => {
 }
 
 const setupModelAssociations = ({models}) => {
-  models.PendingPickups.belongsTo(models.Suppliers)
-  models.Suppliers.hasMany(models.PendingPickups)
+  models.PendingPickup.belongsTo(models.Supplier, {foreignKey: 'supplierId', targetKey: 'pid'})
+  models.Supplier.belongsTo(models.Location, {foreignKey: 'locationId', targetKey: 'pid'})
 }
 
 const sequelize = configSequelize()

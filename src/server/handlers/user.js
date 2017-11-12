@@ -1,6 +1,4 @@
-const User = require('../db/models').User
-
-module.exports = (req, res) => {
+module.exports = () => (req, res) => {
   setTimeout(() => {
     if (req.body.email === 'test') {
       return res.status(200).json(req.body)

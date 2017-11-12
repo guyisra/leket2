@@ -13,6 +13,7 @@
 - name
 - location id ("main supplier")
 
+------------------------------------
 
       select
         suppliers.id as 'id',
@@ -25,3 +26,9 @@
       join locations on suppliers.location_id = locations.id
       where
         pending_pickups.user_id = ${userId};
+
+---------------------------------------
+
+Sequelize is an ActiveRecord ORM (counter to DataMapper ORM).
+No need to create migrations for CREATE TABLE - just use `sequelize.sync()`.
+SELECT...JOIN using `Model.findAll({include: [OtherModel]})`

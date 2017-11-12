@@ -1,19 +1,34 @@
-const express = require('express')
+function toLocationsList(pickups) {
+  const locations = {}
 
-const groupByLocation = require('../utils/group-by-location')
+  pickups.forEach(pickup => {
+    const loc = pickup.Supplier.Location
+    
+    if (!locations[loc.pid]) {
+      locations[loc.pid] = { id: loc.pid, name: loc.name, suppliers: [] }
+    }
 
-module.exports = ({PendingPickups}) => (req, res) => {
-  const userId = 'test'
-  const pending = PendingPickups.findAll({
-    where: {userId},
-    include: [
-      { model: 'Suppliers', as: 'Supplier' },
-      { model: 'Locations', as: 'Location' }
-    ]
+    locations[loc.pid].suppliers.push({
+      id: pickup.Supplier.pid,
+      name: pickup.Supplier.name,
+      address: pickup.Supplier.address
+    })
   })
 
-  console.log({pending})
+  return Object.values(locations)
+}
+
+module.exports = ({PendingPickup, Supplier, Location}) => async (req, res) => {
+  const userId = 'user-id-1'
+  const pending = await PendingPickup.findAll({
+    where: {userId},
+    include: [ {
+      model: Supplier,
+      include: [ Location ]
+    }]
+  })
+
+  const locations = toLocationsList(pending)
   
-  const grouped = groupBySupplier(pending)
-  res.json(grouped)
+  res.json({ locations })
 }

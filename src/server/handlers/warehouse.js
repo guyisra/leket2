@@ -1,7 +1,6 @@
-const Warehouse = require('../db/models/warehouse')
 
-module.exports = (req, res) => {
-  Warehouse.findAll().then(warehouses => {
+module.exports = ({Warehouses}) => (req, res) => {
+  Warehouses.findAll().then(warehouses => {
     res.json(warehouses)
   })
 }
