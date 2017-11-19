@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
   'User',
   {
-    id: {
+    pid: {
       type: DataTypes.STRING,
       unique: true
     },
