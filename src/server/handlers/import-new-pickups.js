@@ -1,10 +1,11 @@
 const parseIsufFile = require('../lib/parse-isuf-file')
 
 const fs = require('fs')
+const iconv = require('iconv-lite')
 const moment = require('moment')
 
 module.exports = ({PendingPickup, Supplier, Location, User}) => async (req, res) => {
-  parseIsufFile(fs.createReadStream('./docs/isuf.txt'))
+  parseIsufFile(fs.createReadStream('./docs/isuf.txt').pipe(iconv.decodeStream('win1255')))
     .on('data', importPickup({PendingPickup, Supplier, Location, User}))
   res.sendStatus(200)
 }

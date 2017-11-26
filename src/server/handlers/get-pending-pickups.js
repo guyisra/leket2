@@ -19,7 +19,7 @@ function toLocationsList(pickups) {
 }
 
 module.exports = ({PendingPickup, Supplier, Location}) => async (req, res) => {
-  const userId = 'user-id-1'
+  const userId = 'VOL0000057'
   const pending = await PendingPickup.findAll({
     where: {userId},
     include: [ {
