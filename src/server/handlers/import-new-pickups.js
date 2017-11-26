@@ -3,7 +3,7 @@ const parseIsufFile = require('../lib/parse-isuf-file')
 const fs = require('fs')
 const moment = require('moment')
 
-module.exports = ({PendingPickup, Supplier, Location, User}) => async (req, res) => {  
+module.exports = ({PendingPickup, Supplier, Location, User}) => async (req, res) => {
   parseIsufFile(fs.createReadStream('./docs/isuf.txt'))
     .on('data', importPickup({PendingPickup, Supplier, Location, User}))
   res.sendStatus(200)
@@ -23,17 +23,19 @@ const importPickup = ({PendingPickup, Supplier, Location, User}) => async (data)
       name: data.locationName
     })
 
-    data.suppliers.forEach(async (curr) => {
+    for (curr of data.suppliers) {
       const res = await Supplier.upsert({
         pid: curr.id,
         name: curr.name,
         locationId: data.locationId
       })
 
-      if (!res) console.error('Error!', curr)
-    })
+      if (!res) {
+        console.error('Error!', curr)
+      }
+    }
 
-    data.suppliers.forEach(async (curr) => {
+    for (curr of data.suppliers) {
       const res = await PendingPickup.upsert({
         pid: data.pickupId,
         date: moment(data.date, 'DD/MM/YY'),
@@ -41,8 +43,10 @@ const importPickup = ({PendingPickup, Supplier, Location, User}) => async (data)
         supplierId: curr.id
       })
 
-      if (!res) console.error('Error!', curr)
-    })
+      if (!res) {
+        console.error('Error!', curr)
+      }
+    }
   }
   catch(e) {
     console.log(`Failed importing data: ${data}`, e)
