@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const express = require('express')
 const path = require('path')
 
@@ -10,6 +11,7 @@ const DATABASE_URL = process.env.DATABASE_URL || 'localhost'
 const main = async () => {
   app.use(express.static('src/public'))
   app.use(bodyParser.json())
+  app.use(cookieParser())
   app.set('view engine', 'ejs')
   app.set('views', path.resolve(__dirname, '../../src/public'))
   app.get('/', (req, res) => {

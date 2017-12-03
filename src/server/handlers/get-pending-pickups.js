@@ -3,7 +3,7 @@ function toLocationsList(pickups) {
 
   pickups.forEach(pickup => {
     const loc = pickup.Supplier.Location
-    
+
     if (!locations[loc.pid]) {
       locations[loc.pid] = { id: loc.pid, name: loc.name, suppliers: [] }
     }
@@ -19,7 +19,8 @@ function toLocationsList(pickups) {
 }
 
 module.exports = ({PendingPickup, Supplier, Location}) => async (req, res) => {
-  const userId = 'VOL0000057'
+  const userId = req.cookies.userId
+
   const pending = await PendingPickup.findAll({
     where: {userId},
     include: [ {
@@ -29,6 +30,6 @@ module.exports = ({PendingPickup, Supplier, Location}) => async (req, res) => {
   })
 
   const locations = toLocationsList(pending)
-  
-  res.json({ locations })
+
+  res.json({ userId, locations })
 }
