@@ -28,7 +28,7 @@ export class LoginForm extends Component {
             </Button>
           </Form.Item>
           {
-            this.props.error && <Alert type='error' message={this.props.error.reason} />
+            this.props.error && <Alert type='error' message={t(`errors.${this.props.error.code}`)} />
           }
         </Form>
       </div>
