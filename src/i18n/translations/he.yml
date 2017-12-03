@@ -8,3 +8,7 @@ user_activity:
 
 location_overview:
   collect_from: אסוף מ-
+
+errors:
+  malformed_email: אימייל לא חוקי
+  email_not_found: אימייל לא קיים

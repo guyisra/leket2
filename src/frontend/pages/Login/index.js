@@ -18,19 +18,20 @@ const mapDispatchToProps = (dispatch) => ({
 export class Login extends Component {
   handleSubmit (credentials) {
     if (!this.props.user.loading) {
-      this.props.actions.login(credentials).then(data => {
-        this.props.actions.gotoUserActivity(data.value.data.email)
-      })
+      this.props.actions.login(credentials).then(
+        data => this.props.actions.gotoUserActivity(data.value.data.email),
+        reason => {}
+      )
     }
   }
   render () {
     return (
       <div className={styles.Login}>
         <div>
-          <LoginForm 
-            onSubmit={credentials => this.handleSubmit(credentials)} 
+          <LoginForm
+            onSubmit={credentials => this.handleSubmit(credentials)}
             loading={this.props.user.loading}
-            errors={this.props.user.error}
+            error={this.props.user.error}
           />
         </div>
       </div>

@@ -3,8 +3,8 @@
     "username": "user",
     "password": "password",
     "database": "leket",
-    "host": "localhost",
-    "port": 5433,
+    "host": "db",
+    "port": 5432,
     "dialect": "postgres"
   },
   "test": {
