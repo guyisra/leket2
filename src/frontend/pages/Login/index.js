@@ -18,9 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
 export class Login extends Component {
   handleSubmit (credentials) {
     if (!this.props.user.loading) {
-      this.props.actions.login(credentials).then(data => {
-        this.props.actions.gotoUserActivity(data.value.data.email)
-      })
+      this.props.actions.login(credentials).then(
+        data => this.props.actions.gotoUserActivity(data.value.data.email),
+        reason => {}
+      )
     }
   }
   render () {
