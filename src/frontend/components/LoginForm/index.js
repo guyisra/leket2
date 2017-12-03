@@ -1,4 +1,4 @@
-import { Button, Form, Icon, Input } from 'antd';
+import { Alert, Button, Form, Icon, Input } from 'antd';
 import React, { Component } from 'react';
 
 import { t } from '../../../i18n';
@@ -21,14 +21,14 @@ export class LoginForm extends Component {
             {getFieldDecorator('email')(
               <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder={t('login_form.email')} />
             )}
-          </Form.Item>          
+          </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button" loading={this.props.loading}>
               {t('login_form.log_in')}
             </Button>
           </Form.Item>
           {
-            this.props.errors ? this.props.errors.error : ''
+            this.props.error && <Alert type='error' message={this.props.error.reason} />
           }
         </Form>
       </div>

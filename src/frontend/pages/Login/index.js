@@ -27,10 +27,10 @@ export class Login extends Component {
     return (
       <div className={styles.Login}>
         <div>
-          <LoginForm 
-            onSubmit={credentials => this.handleSubmit(credentials)} 
+          <LoginForm
+            onSubmit={credentials => this.handleSubmit(credentials)}
             loading={this.props.user.loading}
-            errors={this.props.user.error}
+            error={this.props.user.error}
           />
         </div>
       </div>
