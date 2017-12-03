@@ -1,22 +1,4 @@
-function toLocationsList(pickups) {
-  const locations = {}
-
-  pickups.forEach(pickup => {
-    const loc = pickup.Supplier.Location
-
-    if (!locations[loc.pid]) {
-      locations[loc.pid] = { id: loc.pid, name: loc.name, suppliers: [] }
-    }
-
-    locations[loc.pid].suppliers.push({
-      id: pickup.Supplier.pid,
-      name: pickup.Supplier.name,
-      address: pickup.Supplier.address
-    })
-  })
-
-  return Object.values(locations)
-}
+const {toGetPendingPickupsResponse} = require('../data-mappers/pending-pickup')
 
 module.exports = ({PendingPickup, Supplier, Location}) => async (req, res) => {
   const userId = req.cookies.userId
@@ -29,7 +11,5 @@ module.exports = ({PendingPickup, Supplier, Location}) => async (req, res) => {
     }]
   })
 
-  const locations = toLocationsList(pending)
-
-  res.json({ userId, locations })
+  res.json(toGetPendingPickupsResponse(pending))
 }

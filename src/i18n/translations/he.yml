@@ -10,5 +10,8 @@ location_overview:
   collect_from: אסוף מ-
 
 errors:
-  malformed_email: אימייל לא חוקי
-  email_not_found: אימייל לא קיים
+  login:
+    malformed_email: אימייל לא חוקי
+    email_not_found: אימייל לא קיים
+  pickups:
+    quantity_is_empty: יש להגדיר כמות

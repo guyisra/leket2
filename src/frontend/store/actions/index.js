@@ -7,7 +7,7 @@ import { http } from './api';
 export const login = createAction(LOGIN, (credentials) => http.post('/user', credentials))
 export const gotoUserActivity = email => push('/users/' + email)
 
-export const getPickups = createAction(GET_PICKUPS, () => http.get('/pickups'))
+export const getPickups = createAction(GET_PICKUPS, () => http.get('/pending-pickups'))
 export const gotoLocationPickup = locationId => push('/locations/' + locationId)
 
 export const gotoLogin = () => push('/')
